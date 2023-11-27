@@ -7,8 +7,7 @@ steps:
 
   - label: "Create ZIP"
     command:
-      - npm install
-      - 7z a -tzip function.zip ./
+      - npm install && 7z a -tzip function.zip ./
     artifact_paths:
       - "./function.zip"
 
