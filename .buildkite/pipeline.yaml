@@ -2,5 +2,4 @@ steps:
   - label: ":node: My first step"
     command:
       - npm install
-      - echo "I did it!"
     
