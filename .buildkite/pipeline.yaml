@@ -1,0 +1,12 @@
+steps:
+  - label: ":node: install"
+    command:
+      - npm install
+
+  - wait
+
+  - label: "Create ZIP"
+    command:
+      - 7z a -tzip function.zip ./
+    artifact_paths:
+      - "./function.zip"
