@@ -6,7 +6,7 @@ const handleEvent = async (event, context) => {
     if (controller) {
         try {
             const response = controller(event['body-json'].x, event['body-json'].y);
-            return response;
+            return { result: response };
         } catch (e) {
             return {error: e.toString()};
         }
