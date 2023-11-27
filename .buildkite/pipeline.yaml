@@ -15,5 +15,5 @@ steps:
 
   - label: "Upload ZIP to lambda"
     command:
-      - buildkite-agent artifact download "archives/function.zip" .
+      - buildkite-agent artifact download "function.zip" .
       - aws lambda update-function-code --function-name buildkite-basics-lambda --zip-file ./function.zip
