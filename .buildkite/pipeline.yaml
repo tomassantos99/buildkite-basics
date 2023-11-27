@@ -1,19 +1,6 @@
 steps:
-  - label: ":node: install"
+  - label: ":node: My first step"
     command:
       - npm install
-
-  - wait
-
-  - label: "Create ZIP"
-    command:
-      - npm install && 7z a -tzip ./archives/function.zip ./
-    artifact_paths:
-      - "archives/function.zip"
-
-  - wait
-
-  - label: "Upload ZIP to lambda"
-    command:
-      - buildkite-agent artifact download "*" .
-      - aws lambda update-function-code --function-name buildkite-basics-lambda --zip-file fileb://$BUILDKITE_BUILD_CHECKOUT_PATH/archives/function.zip
+      - echo "I did it!"
+    
