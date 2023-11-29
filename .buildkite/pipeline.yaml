@@ -1,9 +1,8 @@
 steps:
   - label: ":node: Run Tests"
     command:
-      - npm install
-      - npm run test
-      
+      - npm install && npm run test
+
   - wait
 
   - label: ":books: Create ZIP"
