@@ -11,7 +11,7 @@ steps:
     artifact_paths:
       - "archives/function.zip"
 
-  block: ":rocket: Deploy to Lambda"
+  - block: ":rocket: Deploy to Lambda"
 
   - label: ":aws-lambda: Upload ZIP file"
     depends_on: zip_creation
