@@ -4,6 +4,8 @@ steps:
     command:
       - npm install && npm run test
 
+  - wait 
+
   - label: ":books: Create the ZIP file"
     key: zip_creation
     command:
