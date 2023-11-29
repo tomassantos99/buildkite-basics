@@ -1,4 +1,4 @@
 steps:
-  - label: ":node: My first step"
+  - label: ":books: Create the ZIP file"
     command:
-      - npm install
+      - npm install && 7z a -tzip ./archives/function.zip ./
