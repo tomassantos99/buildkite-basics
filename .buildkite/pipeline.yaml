@@ -1,8 +1,9 @@
 steps:
-  - label: ":node: Run Tests”
+  - label: ":node: Run Tests"
     command:
       - npm install
       - npm run test
+      
   - wait
 
   - label: ":books: Create ZIP"
@@ -17,4 +18,3 @@ steps:
     command:
       - buildkite-agent artifact download "*" .
       - aws lambda update-function-code --function-name buildkite-basics-lambda --zip-file fileb://$BUILDKITE_BUILD_CHECKOUT_PATH/archives/function.zip
-
