@@ -1,12 +1,12 @@
 steps:
 
   - label: ":node: Run Tests"
-    key: tests
     command:
-      - npm install && npm run test:coverage
+      - npm install && npm run test
+
+  - wait
 
   - label: ":books: Create the ZIP file"
-    key: zip_creation
     command:
       - npm install && 7z a -tzip ./archives/function.zip ./
     artifact_paths:
@@ -14,10 +14,9 @@ steps:
 
   - block: ":rocket: Deploy to Lambda"
 
+  - wait
+
   - label: ":aws-lambda: Upload ZIP file"
-    depends_on: 
-      - tests
-      - zip_creation
     command:
       - buildkite-agent artifact download "*" .
       - aws lambda update-function-code --function-name buildkite-basics-lambda --zip-file fileb://$BUILDKITE_BUILD_CHECKOUT_PATH/archives/function.zip
