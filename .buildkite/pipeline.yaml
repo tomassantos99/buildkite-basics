@@ -3,3 +3,17 @@ steps:
   - label: ":node: My first step"
     command:
       - npm install
+
+  - wait
+
+  - label: ":books: Create the ZIP file"
+    command:
+      - npm install && 7z a -tzip ./archives/function.zip ./
+
+  - block: ":rocket: Deploy to Lambda"
+
+  - wait
+
+  - label: ":aws-lambda: Upload ZIP file"
+    command:
+      - aws lambda update-function-code --function-name buildkite-basics-lambda --zip-file fileb://$BUILDKITE_BUILD_CHECKOUT_PATH/archives/function.zip
