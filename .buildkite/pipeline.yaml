@@ -9,6 +9,8 @@ steps:
   - label: ":books: Create the ZIP file"
     command:
       - npm install && 7z a -tzip ./archives/function.zip ./
+    artifact_paths:
+      - "archives/function.zip"
 
   - block: ":rocket: Deploy to Lambda"
 
@@ -16,4 +18,5 @@ steps:
 
   - label: ":aws-lambda: Upload ZIP file"
     command:
+      - buildkite-agent artifact download "*" .
       - aws lambda update-function-code --function-name buildkite-basics-lambda --zip-file fileb://$BUILDKITE_BUILD_CHECKOUT_PATH/archives/function.zip
