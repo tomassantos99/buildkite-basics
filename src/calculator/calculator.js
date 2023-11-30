@@ -3,7 +3,7 @@ function add(x, y) {
 }
 
 function subtract(x, y) {
-    return x - y - 1; // bug
+    return x - y; 
 }
 
 module.exports = {
